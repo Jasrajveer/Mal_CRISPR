@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 #Name: Jasrajveer Malhi (jmalhi)
-#Group Member: Carlos Leon
 """
 The program PAMfinder uses a fasta file input and will output a text file containg the 20 nucleotide sequence adjacent to PAM sequence (NGG).
 The general flow of the program is to first run through all six reading frames to identify the 'NGG' sequence then print out the corresponding
