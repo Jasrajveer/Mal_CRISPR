@@ -51,3 +51,4 @@ Reverse Strand PAM Sites (in reference to the Top Strand Position):
 ('TAATGAGTTGTAATTCCTCT', 291)
 ('TTAATGAGTTGTAATTCCTC', 292)
 ('CCCAATCAGTACGTTAATTT', 317)
+
