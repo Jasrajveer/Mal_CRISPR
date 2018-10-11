@@ -12,7 +12,7 @@ are also printed on the screen.
 
 Example Output from mazf.fa file:
 
->NC_000913.3:c2911091-2910756 Escherichia coli str. K-12 substr. MG1655, complete genome
+# NC_000913.3:c2911091-2910756 Escherichia coli str. K-12 substr. MG1655, complete genome
 Forward Strand PAM Sites:
 ('AAGCCGATACGTACCCGATA', 26)
 ('AGCCGATACGTACCCGATAT', 27)
