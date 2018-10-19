@@ -1,5 +1,5 @@
 # Mal_CRISPR
-The program PAMfinder uses a fasta file input and will output a text file containg the 20 nucleotide sequence adjacent to PAM sequence (NGG).
+The program PAMfinder uses a fasta file input and will output a text file containg the 20 nucleotide sequence adjacent to PAM sequence (NGG), for CAS9 use only.
 The general flow of the program is to first run through all six reading frames to identify the 'NGG' sequence then print out the corresponding
 guide sequence. This guide sequence can then be useful for designing a CRISPR guideRNAs.
 
