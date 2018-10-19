@@ -38,7 +38,7 @@ class PAMfinder:
 		self.headers = sequenceList[0] 		# Initialize the first value, it is the header.
 		self.sequences = sequenceList[1] 	# Initialize the second value, this contains the sequence itself.
 		self.reversedSequenceList = [] 		# Initialize a list that will store the reverse sequence.
-		self.listofPAMS = [] 				# Initialize the list for the forward PAM sequences.
+		self.listofPAMS = [] 			# Initialize the list for the forward PAM sequences.
 		self.listofReversedPAMS = [] 		# Initialize the list of reverse PAM sequences.
 	
 	def classController(self):
@@ -59,7 +59,7 @@ class PAMfinder:
 		counter = 0
 		reversedSeq = list(self.sequences[i][::-1]) 		# Create a reversed list that will allow for counting to be done relative to forward strand.
 
-		for character in reversedSeq: 						# Assign the corresponding reveresed values.
+		for character in reversedSeq: 				# Assign the corresponding reveresed values.
 			if character == "A":
 				reversedSeq[counter] = "T"
 			elif character == "T":
@@ -69,7 +69,7 @@ class PAMfinder:
 			else:
 				reversedSeq[counter] = "C"
 			counter+=1 
-		reversedSeq = "".join(reversedSeq) 					# After the sequence is reversed, join all the values togther.
+		reversedSeq = "".join(reversedSeq) 			# After the sequence is reversed, join all the values togther.
 		self.reversedSequenceList.append(reversedSeq) 		# Add the reversedSeq to the end of the reversedSequenceList.
 
 		
@@ -77,9 +77,9 @@ class PAMfinder:
 		"""FindPAMS is used to find the PAM sequence and add it to the lists created for
 		the forward and reverse strand along with the corresponding positions. """
 		import sys
-		listofPAMS = [] 						# Create a list for the PAM sequences.
+		listofPAMS = [] 					# Create a list for the PAM sequences.
 		listofReversedPAMS = [] 				# Create a list for the reverse PAM sequences.
-		counter = 0 							# This counter starts for the forward sequences.
+		counter = 0 						# This counter starts for the forward sequences.
 		for nucleotide in self.sequences[i]:
 			if nucleotide == "G" and self.sequences[i][counter-1] == "G":
 				if counter > 23: 															# Have a set length that is 23 or greater to pass it on.
@@ -93,7 +93,7 @@ class PAMfinder:
 					listofReversedPAMS.append((self.reversedSequenceList[i][counter-22:counter-2],len(self.reversedSequenceList[i])-counter+2))
 			counter+=1
 		
-		self.listofPAMS.append((listofPAMS)) 						# Add to the the forward sequences to the list.
+		self.listofPAMS.append((listofPAMS)) 			    # Add to the the forward sequences to the list.
 		self.listofReversedPAMS.append((listofReversedPAMS[::-1]))  # Add the reverse sequence lists to the lists for reverse sequences.
    
 def main():
