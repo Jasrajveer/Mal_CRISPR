@@ -25,7 +25,7 @@ class FastAreader :
 				header = line
 				sequence = ''
 			else:
-				sequence+=line.strip("\n")
+				sequence+=line.strip("\r\n")
 		sequenceList.append(sequence)
 
 		return (headerList,sequenceList)
@@ -35,11 +35,11 @@ class PAMfinder:
 	for the forward strand to listofPAMS and for the reverse they are set to listofReversedPAMS."""
 
 	def __init__(self,sequenceList):
-		self.headers = sequenceList[0] # Initialize for the header sequence.
-		self.sequences = sequenceList[1] # Initialize for the sequnce list.
-		self.reversedSequenceList = [] 
-		self.listofPAMS = [] # Initialize the list of forward PAM sequences.
-		self.listofReversedPAMS = [] # Initialize the list of reverse PAM sequences.
+		self.headers = sequenceList[0] 		# Initialize the first value, it is the header.
+		self.sequences = sequenceList[1] 	# Initialize the second value, this contains the sequence itself.
+		self.reversedSequenceList = [] 		# Initialize a list that will store the reverse sequence.
+		self.listofPAMS = [] 				# Initialize the list for the forward PAM sequences.
+		self.listofReversedPAMS = [] 		# Initialize the list of reverse PAM sequences.
 	
 	def classController(self):
 		"""The controller will be used for requests made, and the class will grab 
@@ -57,9 +57,9 @@ class PAMfinder:
 		to the 5' position."""
 		import sys
 		counter = 0
-		reversedSeq = list(self.sequences[i][::-1]) # Create a reversed list that will allow for counting to be done relative to forward strand.
+		reversedSeq = list(self.sequences[i][::-1]) 		# Create a reversed list that will allow for counting to be done relative to forward strand.
 
-		for character in reversedSeq: # Assign the corresponding reveresed values.
+		for character in reversedSeq: 						# Assign the corresponding reveresed values.
 			if character == "A":
 				reversedSeq[counter] = "T"
 			elif character == "T":
@@ -68,22 +68,22 @@ class PAMfinder:
 				reversedSeq[counter] = "G"
 			else:
 				reversedSeq[counter] = "C"
-			counter+=1 # Add one to the counter
-		reversedSeq = "".join(reversedSeq) # After the sequence is reversed, join all the values togther.
-		self.reversedSequenceList.append(reversedSeq) # Add the reversedSeq to the end of the reversedSequenceList.
+			counter+=1 
+		reversedSeq = "".join(reversedSeq) 					# After the sequence is reversed, join all the values togther.
+		self.reversedSequenceList.append(reversedSeq) 		# Add the reversedSeq to the end of the reversedSequenceList.
 
 		
 	def findPAMs(self,i):
 		"""FindPAMS is used to find the PAM sequence and add it to the lists created for
 		the forward and reverse strand along with the corresponding positions. """
 		import sys
-		listofPAMS = [] # Create a list for the PAM sequences.
-		listofReversedPAMS = [] # Create a list for the reverse PAM sequences.
-		counter = 0 # This counter starts for the forward sequences.
+		listofPAMS = [] 						# Create a list for the PAM sequences.
+		listofReversedPAMS = [] 				# Create a list for the reverse PAM sequences.
+		counter = 0 							# This counter starts for the forward sequences.
 		for nucleotide in self.sequences[i]:
 			if nucleotide == "G" and self.sequences[i][counter-1] == "G":
-				if counter > 23: # Have a set length that is 23 or greater to pass it on.
-					listofPAMS.append((self.sequences[i][counter-22:counter-2],counter-1)) # Add the sequence with the correct position to the list.
+				if counter > 23: 															# Have a set length that is 23 or greater to pass it on.
+					listofPAMS.append((self.sequences[i][counter-22:counter-2],counter-1))  # Add the sequence with the correct position to the list.
 			counter+=1
 
 		counter = 0 # This counter starts for the reverse sequences
@@ -93,8 +93,8 @@ class PAMfinder:
 					listofReversedPAMS.append((self.reversedSequenceList[i][counter-22:counter-2],len(self.reversedSequenceList[i])-counter+2))
 			counter+=1
 		
-		self.listofPAMS.append((listofPAMS)) # Add to the the forward sequences to the list.
-		self.listofReversedPAMS.append((listofReversedPAMS[::-1])) # Add the reverse sequence lists to the lists for reverse sequences.
+		self.listofPAMS.append((listofPAMS)) 						# Add to the the forward sequences to the list.
+		self.listofReversedPAMS.append((listofReversedPAMS[::-1]))  # Add the reverse sequence lists to the lists for reverse sequences.
    
 def main():
 	"""The main is used to print the values in a specific format. The forward and reverse sequences
@@ -107,10 +107,10 @@ def main():
 	f = open('Guide Sequences.txt','w') # Creates and opens text file called 'Guide Sequences'.
 	for i in range(len(PAMSequences[0])):
 		f.write(PAMSequences[0][i]) # Prints the header sequence into the file.
-		f.write('\n') # New line is added to seperate the sequence results. 
+		f.write('\n') 
 		print(PAMSequences[0][i]) # Prints to screen. 
 		for j in range(len(PAMSequences[1][i])): 
-			if j == 0: # Pass the write command before any of the sequences are printed.
+			if j == 0: 
 				f.write("Forward Strand PAM Sites:") # Prints to file.
 				f.write('\n')
 				print("Forward Strand PAM Sites:") # Prints to screen.
