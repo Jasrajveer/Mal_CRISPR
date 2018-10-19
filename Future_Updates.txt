@@ -1,0 +1,8 @@
+Some Improvements that will be implemented in the future are: <\br>
+  1) Implement scoring to proved a list of the best possible guide RNA sequences.<\br>
+      * On/Off Target score <\br>
+      * Early Coding region<\br>
+      * Amount of Activity<\br>
+      * Common Sequences in Exon<\br>
+      * Seperation if using multiple gRNAs for Gene Knockout<\br>
+  2) Create a GUI for the program<\br>
