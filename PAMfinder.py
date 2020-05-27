@@ -103,18 +103,18 @@ def main():
 	be displayed on terminal or wherever the code is being run. """
 	import sys
 
-	listofSequences = FastAreader(sys.stdin).readFasta() # Calls on readFasta to open and read the fasta file.
+	listofSequences = FastAreader(sys.stdin).readFasta() 
 	PAMSequences = PAMfinder(listofSequences).classController() # Calls on controller class to return desired models.
-	f = open('Guide Sequences.txt','w') # Creates and opens text file called 'Guide Sequences'.
+	f = open('Guide Sequences.txt','w') 
 	for i in range(len(PAMSequences[0])):
 		f.write(PAMSequences[0][i]) # Prints the header sequence into the file.
 		f.write('\n') 
-		print(PAMSequences[0][i]) # Prints to screen. 
+		print(PAMSequences[0][i])  
 		for j in range(len(PAMSequences[1][i])): 
 			if j == 0: 
-				f.write("Forward Strand PAM Sites:") # Prints to file.
+				f.write("Forward Strand PAM Sites:") 
 				f.write('\n')
-				print("Forward Strand PAM Sites:") # Prints to screen.
+				print("Forward Strand PAM Sites:") 
 			print(PAMSequences[1][i][j]) # Prints the forward sequences
 			y = str(PAMSequences[1][i][j]) # Changes from int to string characters.
 			x = ''.join(y) # Joining all the string values so we can print to file.
